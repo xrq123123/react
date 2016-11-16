@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<script src="js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script type="text/javascript">
+                    window.onload=function(){
+                    
+                        var pageUrl=window.location.href;
+                  
+                        var weizhi=pageUrl.indexOf('=');
+                       
+                        if(weizhi>=0){
+                           
+                            var k=pageUrl.substr(weizhi+1);
+							
+							window.blogKey=k;
+							
+                            window.blogs=JSON.parse(window.localStorage.getItem("blogs"));
+                         
+                             $("#title").html(blogs[k]['title']);
+                             $("#time").html(blogs[k]['time']);
+                             $("#content").html(blogs[k]['content']);
+							 if(blogs[k]['reply']){
+								var replys=blogs[k]['reply'];
+								var html="";
+								$(replys).each(function(e){
+									html+='<div class="comment_content"><div class="comment_person"><span>'+replys[e].name+'</span>&nbsp;说</div>';
+									html+='<div class="comment_text">'+replys[e].reply_content+'</div>';		
+									html+='<div class="comment_bottom">'+replys[e].time+'</div></div>';					
+								})
+								$("#comment").html(html);
+							 
+							 }
+                        }else{
+                            
+                            alert("别乱来，传个参可否?");
+                        }  
+                    }
+             
+                    
+		</script>
+	</head>
+
+	<body>
+
+		<div class="container">
+			<div class="col-md-12">
+				<div class="tc-ch">
+					<!--全文标题-->
+					<div class="tc-font">
+						<a id="title"></a>
+					</div>
+					<!--全文时间-->
+					<div class="tc-time">Time
+						<a id="time"></a>
+					</div>
+					<!--全文正文-->
+					<div class="tc-contents" id="content">
+                                           
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-12 comment_box">
+			<div><h3>留言：</h3></div>
+				<div id="comment">
+						没有评论呢~~~
+				</div>
+			</div>
+			<div class="col-md-12 reply">
+				<div><h3>发表评论：</h3></div>
+				<form name="replyForm">
+				<div class="form-group">
+                        <label for="name" class="control-label">您的姓名</label>
+                        <input type="text" placeholder="请在这里输入您的姓名" class="form-control" name="name">
+               </div>
+			    <div class="form-group">
+                        <label for="reply_content" class="control-label">您的留言：</label>
+						<textarea name="reply_content" placeholder="请在这里输入您评论的内容" rows="10" class="form-control"></textarea>
+                </div>
+				<div><button type="button" class="btn btn-default" onclick="put_repay()">发表评论</button></div>
+				
+				</form>
+			</div>
+			
+			
+			
+		</div>
+		<script>
+			function put_repay(){
+				var name=$(window.replyForm.name).val();
+				var reply_content=$(window.replyForm.reply_content).val();
+				if(name==""){
+					alert("请留下您的大名！");
+					return;
+				}
+				if(reply_content==""){
+					alert("请写下您的评论！");
+					return;
+				}
+				var d = new Date();
+				var year = d.getFullYear();
+				var month = d.getMonth() + 1;
+				var day = d.getDate();
+				var now = year + "-" + month + "-" + day;
+				
+				var reply={"name":name,"reply_content":reply_content,"time":now};
+				
+				if(blogs[blogKey]['reply']){
+					blogs[blogKey]['reply'].push(reply);
+				}else{
+					blogs[blogKey]['reply']=[];
+					blogs[blogKey]['reply'].push(reply);
+				}
+				window.localStorage.setItem("blogs", JSON.stringify(blogs));
+				alert("评论成功！");
+				window.location.reload();
+				
+			
+			}
+		
+		</script>
+	</body>
+
+</html>

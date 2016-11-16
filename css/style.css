@@ -1,0 +1,130 @@
+body {
+	font-size: 16px;
+	font-family: "微软雅黑";
+}
+
+.text-center {
+	color: #fa4b2a;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.text-add a {
+	margin-right: 1em;
+	margin-bottom: 1em;
+	float: right;
+	padding: 0.3em 1.8em;
+	display: inline-block;
+	border-radius: 5px;
+	text-align: center;
+	text-decoration: none;
+	color: #FFFFFF;
+	background-color: #fa4b2a;
+}
+
+.text-add a:hover,
+.tc-ch .tc-font a:hover,
+.tc-ch .tc-time a:hover,
+.tc-ch .tc-function .bht1 a:hover,
+.tc-ch .tc-function .nav a:hover {
+	color: #FFFFFF;
+	background-color: #000;
+}
+
+.tc-ch .tc-font a {
+	font-size: 24px;
+	color: #fa4b2a;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.tc-ch .tc-time {
+	font-size: 1em;
+	color: #303030;
+	font-weight: 600;
+	margin-top: 1em;
+}
+
+.tc-ch .tc-time a {
+	color: #fa4b2a;
+	text-decoration: none;
+}
+
+.tc-ch .tc-content {
+	margin-top: 1em;
+        word-wrap: break-word;
+}
+
+.tc-ch .tc-content a,
+.tc-ch .tc-contents a {
+	color: #000000;
+}
+
+.tc-ch .tc-function {
+	padding-top: 1em;
+	margin-right: 1em;
+}
+
+.tc-ch .tc-function .bht1 {
+	float: left;
+}
+
+.tc-ch .tc-function .bht1 a {
+	border-radius: 5px;
+	background: #fa4b2a;
+	padding: 0.3em 1.8em;
+	display: inline-block;
+	color: #fff;
+	text-decoration: none;
+}
+
+.tc-ch .tc-function .nav a {
+	padding: 0.3em 1.8em;
+	display: inline-block;
+	border-radius: 5px;
+	text-align: center;
+	text-decoration: none;
+	color: #FFFFFF;
+	background-color: #fa4b2a;
+}
+
+hr {
+	border-top: 1px dashed #fa4b2a;
+}
+
+.tc-ch .tc-contents {
+	min-height: 350px;
+	height: 100%;
+	border: solid 1px black;
+	text-indent: 2em;
+        word-wrap: break-word;
+}
+
+.comment_box{
+	padding:10px;
+}
+.comment_content{
+	padding:10px 20px;
+	border-bottom:1px dashed #CCC;
+}
+
+.comment_person{
+	font-size:1.6rem;
+	color: #2B2B2B;
+    font-weight: 700;
+	
+}
+.comment_person span{
+	text-decoration: underline;
+}
+.comment_text{
+	padding:5px;
+}
+.comment_bottom{
+	text-align:right;
+}
+.reply{
+	padding-bottom:20px;
+	
+	
+}
